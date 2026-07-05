@@ -554,7 +554,7 @@ function mondayOf(d){const x=new Date(d);const day=x.getDay();x.setDate(x.getDat
 function buildWeeks(s,e){
   let cur=mondayOf(new Date(s+'T00:00:00'));const end=new Date(e+'T00:00:00'),weeks=[],mc={};
   while(cur<=end){
-    const dates=[];for(let i=0;i<5;i++){const dd=new Date(cur);dd.setDate(cur.getDate()+i);dates.push(isoDate(dd));}
+    const dates=[];for(let i=0;i<7;i++){const dd=new Date(cur);dd.setDate(cur.getDate()+i);dates.push(isoDate(dd));}
     const ref=new Date(dates[2]+'T00:00:00');const mk=ref.getFullYear()+'-'+(ref.getMonth()+1);mc[mk]=(mc[mk]||0)+1;
     weeks.push({lbl:`W${mc[mk]} ${BLN_F[ref.getMonth()+1].slice(0,3)}`,monthName:BLN_F[ref.getMonth()+1],year:ref.getFullYear(),dates});
     cur=new Date(cur);cur.setDate(cur.getDate()+7);
