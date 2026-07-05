@@ -338,11 +338,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <script>
 // ══ CONFIG ══════════════════════════════════════════════
-const FBKEY='atv_fb_url_v8';
 const PWKEY='atv_pwd_v2';
 const LSKEY='atv_local_v8';
 const FB_NODE='atv_data_v8';
-let FB_URL=localStorage.getItem(FBKEY)||'';
+// ── Firebase URL tertanam langsung — tidak perlu setup ──
+const FB_URL='https://timeframe-90a8c-default-rtdb.asia-southeast1.firebasedatabase.app';
 
 // ══ SEED DATA (Histori — hardcoded, tidak disimpan di Firebase) ══
 const SEED={
@@ -696,19 +696,7 @@ function saveConfig(){
 }
 
 function resetFbConfig(){
-  if(!confirm('Reset Firebase URL? Kamu perlu input ulang URL database.'))return;
-  localStorage.removeItem(FBKEY);
-  localStorage.removeItem(LSKEY);
-  FB_URL='';
-  // Tutup semua screen dan modal
-  closeM('mCfg');
-  document.getElementById('app').style.display='none';
-  ['sRole','sPic','sPwd'].forEach(s=>document.getElementById(s).style.display='none');
-  // Tampilkan setup screen
-  document.getElementById('sSetup').style.display='flex';
-  document.getElementById('fbUrlIn').value='';
-  document.getElementById('setupErr').textContent='';
-  if(syncTimer)clearInterval(syncTimer);
+  alert('Firebase URL sudah tertanam di kode. Hubungi admin untuk ganti database.');
 }
 
 // ══ AUTH ═════════════════════════════════════════════════
@@ -996,14 +984,9 @@ function closeM(id){document.getElementById(id).style.display='none';}
 function bgClose(e,id){if(e.target===document.getElementById(id))closeM(id);}
 
 // ══ INIT ═════════════════════════════════════════════════
-lLoad(); // load dari localStorage cache dulu (agar tidak blank)
-if(!FB_URL){
-  // Firebase belum dikonfigurasi → tampilkan setup screen
-  document.getElementById('sSetup').style.display='flex';
-}else{
-  // Firebase sudah ada → langsung ke role selection
-  document.getElementById('sRole').style.display='flex';
-}
+lLoad();
+// Langsung ke role selection — tidak ada setup screen
+document.getElementById('sRole').style.display='flex';
 </script>
 </body>
 </html>
