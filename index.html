@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
 <title>ATV — Daily Realisasi</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -14,26 +13,36 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F4EFE6;color:#15120F;min-height:100vh;font-size:14px;-webkit-font-smoothing:antialiased}
 :root{
   --blk:#15120F;--org:#D07048;--crm:#F4EFE6;--gld:#C9A876;--blk2:#2a2520;
-  --ol:#f5e6dd;--om:#e8b89a;
-  --grn:#2D6A4F;--gl2:#d8ede3;--gm2:#8ec4a8;
-  --dsb:#1a4a7a;--dsl:#dce8f5;--dsm:#8fb8e0;
-  --R:12px;--SH:0 2px 8px rgba(21,18,15,.10);
+  --ol:#f5e6dd;--om:#e8b89a;--grn:#2D6A4F;--gl2:#d8ede3;--gm2:#8ec4a8;
+  --dsb:#1a4a7a;--dsl:#dce8f5;--dsm:#8fb8e0;--R:12px;--SH:0 2px 8px rgba(21,18,15,.10);
 }
-/* ── SCREENS ── */
 .screen{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:1.5rem 1rem;background:var(--blk);position:relative;overflow-y:auto}
 .logo-mark{width:44px;height:44px;border-radius:12px;background:var(--org);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:#fff}
 .logo-row{display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .logo-txt{color:var(--crm);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.55}
 .s-title{color:var(--crm);font-size:22px;font-weight:800;text-align:center;margin-bottom:4px}
-.s-sub{color:var(--gld);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:.65;margin-bottom:28px}
-.back-btn{position:absolute;top:16px;left:16px;background:none;border:none;color:var(--crm);opacity:.45;font-size:22px;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+.s-sub{color:var(--gld);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;opacity:.65;margin-bottom:20px}
+.back-btn{position:absolute;top:16px;left:16px;background:none;border:none;color:var(--crm);opacity:.45;font-size:22px;cursor:pointer;padding:8px}
+/* SETUP */
+.setup-box{background:var(--blk2);border:1px solid rgba(201,168,118,.18);border-radius:16px;padding:1.4rem;width:100%;max-width:340px;margin-top:8px}
+.step{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px}
+.step-num{min-width:22px;height:22px;border-radius:50%;background:var(--org);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.step-txt{color:rgba(244,239,230,.6);font-size:12px;line-height:1.55}
+.step-url{display:block;margin-top:3px;font-size:10px;font-family:monospace;color:var(--gld);background:rgba(255,255,255,.07);padding:3px 8px;border-radius:4px}
+.setup-sep{height:1px;background:rgba(201,168,118,.12);margin:12px 0}
+.fi-dark{width:100%;padding:11px 13px;border-radius:9px;border:1px solid rgba(201,168,118,.2);background:#0f0d0b;color:var(--crm);font-size:13px;outline:none;font-family:monospace;margin-bottom:8px}
+.fi-dark:focus{border-color:var(--org)}
+.fi-dark::placeholder{color:#444;font-family:inherit}
+.btn-org{width:100%;padding:12px;border-radius:9px;border:none;background:var(--org);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.setup-err{color:#e07070;font-size:11px;text-align:center;min-height:14px;margin-top:4px}
+/* ROLE / PIC */
 .role-cards{display:flex;gap:10px;width:100%;max-width:320px}
-.role-card{flex:1;background:var(--blk2);border:1.5px solid rgba(201,168,118,.15);border-radius:16px;padding:1.4rem .8rem;cursor:pointer;text-align:center;transition:all .15s;min-height:44px}
+.role-card{flex:1;background:var(--blk2);border:1.5px solid rgba(201,168,118,.15);border-radius:16px;padding:1.4rem .8rem;cursor:pointer;text-align:center;transition:all .15s}
 .role-card:active{transform:scale(.97)}.role-card:hover{border-color:var(--org)}.role-card.gold:hover{border-color:var(--gld)}
 .role-card h2{color:var(--crm);font-size:13px;font-weight:700;margin-top:8px}
 .rc-icon{font-size:24px}
 .pic-cards{display:flex;flex-direction:column;gap:8px;width:100%;max-width:310px;margin-top:8px}
-.pic-card{background:var(--blk2);border:1.5px solid rgba(201,168,118,.15);border-radius:13px;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all .15s;min-height:56px}
+.pic-card{background:var(--blk2);border:1.5px solid rgba(201,168,118,.15);border-radius:13px;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all .15s}
 .pic-card:active{transform:scale(.98)}.pic-card:hover{border-color:var(--org)}
 .pc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .pc-name{color:var(--crm);font-size:14px;font-weight:700}
@@ -42,11 +51,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .pwd-input{width:100%;padding:12px 14px;border-radius:9px;border:1px solid rgba(201,168,118,.2);background:#15120F;color:var(--crm);font-size:16px;outline:none;letter-spacing:3px;text-align:center}
 .pwd-input:focus{border-color:var(--org)}
 .pwd-input::placeholder{letter-spacing:0;color:#555;font-size:13px}
-.pwd-btn{width:100%;padding:13px;border-radius:9px;border:none;background:var(--org);color:#fff;font-size:14px;font-weight:700;cursor:pointer;min-height:44px}
+.pwd-btn{width:100%;padding:13px;border-radius:9px;border:none;background:var(--org);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
 .pwd-err{color:#e07070;font-size:12px;text-align:center;min-height:14px}
-/* ── APP ── */
-.hdr{background:var(--blk);padding:.7rem 1rem;display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(201,168,118,.12)}
-.hdr-back{background:none;border:none;color:var(--crm);font-size:20px;cursor:pointer;padding:4px 6px;opacity:.65;min-width:36px;min-height:36px}
+/* APP */
+.hdr{background:var(--blk);padding:.7rem .8rem;display:flex;align-items:center;gap:7px;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(201,168,118,.12)}
+.hdr-back{background:none;border:none;color:var(--crm);font-size:20px;cursor:pointer;padding:4px 6px;opacity:.6}
 .hdr-title{font-size:13px;font-weight:700;flex:1;color:var(--crm);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .badge{font-size:9px;padding:3px 8px;border-radius:20px;font-weight:700;white-space:nowrap}
 .b-admin{background:rgba(201,168,118,.18);color:var(--gld);border:1px solid rgba(201,168,118,.28)}
@@ -56,25 +65,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .b-ds{background:var(--dsl);color:var(--dsb);border:1px solid var(--dsm)}
 .b-all{background:rgba(201,168,118,.18);color:var(--gld);border:1px solid rgba(201,168,118,.28)}
 .hdr-btn{width:32px;height:32px;border-radius:8px;border:1px solid rgba(201,168,118,.15);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--crm);flex-shrink:0}
-/* SYNC */
-.sync-bar{background:var(--blk);padding:.25rem 1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,168,118,.07)}
+/* SYNC BAR */
+.sync-bar{background:var(--blk);padding:.3rem .8rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,168,118,.07)}
 .sync-info{font-size:9px;color:rgba(244,239,230,.3);display:flex;align-items:center;gap:5px}
-.dot{width:5px;height:5px;border-radius:50%;background:#4caf50;flex-shrink:0}
-.dot.s{background:var(--org);animation:pulse 1.2s infinite}.dot.e{background:#e07070}
+.dot{width:6px;height:6px;border-radius:50%;background:#4caf50;flex-shrink:0}
+.dot.s{background:var(--org);animation:pulse 1s infinite}.dot.e{background:#e07070}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-.sync-btn{font-size:9px;padding:2px 9px;border-radius:20px;border:1px solid rgba(201,168,118,.15);background:transparent;color:rgba(244,239,230,.35);cursor:pointer;min-height:28px}
+.sync-btn{font-size:9px;padding:2px 9px;border-radius:20px;border:1px solid rgba(201,168,118,.15);background:transparent;color:rgba(244,239,230,.35);cursor:pointer}
 /* MONTH BANNER */
-.month-banner{background:var(--blk);padding:.5rem 1rem .6rem;border-bottom:1px solid rgba(201,168,118,.07)}
+.month-banner{background:var(--blk);padding:.5rem .8rem .55rem;border-bottom:1px solid rgba(201,168,118,.07)}
 .month-big{font-size:20px;font-weight:800;color:var(--crm);letter-spacing:-.3px;line-height:1}
-.month-sub{font-size:10px;color:rgba(201,168,118,.5);margin-top:2px;font-weight:500}
-/* NAV WEEK */
-.nav{background:var(--blk);border-bottom:1px solid rgba(201,168,118,.08);padding:.4rem .8rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.month-sub{font-size:10px;color:rgba(201,168,118,.45);margin-top:2px}
+/* NAV */
+.nav{background:var(--blk);border-bottom:1px solid rgba(201,168,118,.08);padding:.4rem .7rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
 .tabs{display:inline-flex;gap:5px}
-.tab{padding:5px 12px;font-size:11px;border-radius:20px;border:1px solid rgba(201,168,118,.15);background:transparent;cursor:pointer;color:rgba(244,239,230,.4);font-weight:600;white-space:nowrap;transition:all .12s;min-height:30px}
+.tab{padding:5px 12px;font-size:11px;border-radius:20px;border:1px solid rgba(201,168,118,.15);background:transparent;cursor:pointer;color:rgba(244,239,230,.4);font-weight:600;white-space:nowrap;transition:all .12s}
 .tab.aw{background:var(--gld);border-color:var(--gld);color:var(--blk)}
 /* STATS */
-.stats{background:var(--blk);padding:.7rem 1rem .3rem}
+.stats{background:var(--blk);padding:.7rem .8rem .3rem}
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:7px}
 .stat-card{background:var(--blk2);border:1px solid rgba(201,168,118,.1);border-radius:var(--R);padding:9px 10px}
 .stat-n{font-size:18px;font-weight:800;color:var(--org)}.stat-n.g{color:var(--gld)}
@@ -84,9 +93,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .prog{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
 .prog-fill{height:100%;background:var(--org);border-radius:3px;transition:width .4s}
 /* FILTER */
-.filter{display:flex;gap:5px;padding:.45rem .8rem;overflow-x:auto;scrollbar-width:none;background:var(--crm);border-bottom:1px solid rgba(21,18,15,.07)}
+.filter{display:flex;gap:5px;padding:.4rem .7rem;overflow-x:auto;scrollbar-width:none;background:var(--crm);border-bottom:1px solid rgba(21,18,15,.07)}
 .filter::-webkit-scrollbar{display:none}
-.fb{padding:5px 12px;font-size:11px;border-radius:20px;border:1px solid rgba(21,18,15,.12);background:transparent;cursor:pointer;color:rgba(21,18,15,.4);white-space:nowrap;font-weight:600;min-height:30px}
+.fb{padding:5px 11px;font-size:11px;border-radius:20px;border:1px solid rgba(21,18,15,.12);background:transparent;cursor:pointer;color:rgba(21,18,15,.4);white-space:nowrap;font-weight:600}
 .fb.fa{background:var(--blk);border-color:var(--blk);color:var(--crm)}
 .fb.fpa{background:var(--gl2);border-color:var(--gm2);color:var(--grn)}
 .fb.fcr{background:var(--ol);border-color:var(--om);color:var(--org)}
@@ -103,7 +112,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .task-row{display:flex;flex-direction:column;padding:9px 10px;border-bottom:1px solid rgba(21,18,15,.04)}
 .task-row:last-child{border:none}
 .task-top{display:flex;align-items:flex-start;gap:8px}
-.chkbox{width:20px;height:20px;border-radius:5px;border:1.5px solid rgba(21,18,15,.16);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;cursor:pointer;transition:all .13s}
+.chkbox{width:20px;height:20px;border-radius:5px;border:1.5px solid rgba(21,18,15,.15);background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;cursor:pointer;transition:all .13s}
 .chkbox.on{background:var(--org);border-color:var(--org)}
 .chkbox.on::after{content:'✓';color:#fff;font-size:12px;font-weight:800}
 .task-body{flex:1;min-width:0}
@@ -115,20 +124,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .pb-cr{background:var(--ol);color:var(--org);border:1px solid var(--om)}
 .pb-pr{background:#ede8f0;color:#4a2d6b;border:1px solid #c5b8d4}
 .pb-ds{background:var(--dsl);color:var(--dsb);border:1px solid var(--dsm)}
-.act-btn{width:24px;height:24px;border-radius:5px;border:1px solid rgba(21,18,15,.08);background:#f8f7f4;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center}
+.act-btn{width:26px;height:26px;border-radius:6px;border:1px solid rgba(21,18,15,.08);background:#f8f7f4;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center}
 .act-del{color:#c0392b}
 .real-wrap{margin-top:5px;padding-left:28px}
-.real-label{font-size:9px;color:rgba(21,18,15,.28);margin-bottom:2px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+.real-label{font-size:9px;color:rgba(21,18,15,.27);margin-bottom:2px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
 .real-input{width:100%;padding:5px 9px;border-radius:7px;border:1px solid rgba(21,18,15,.1);font-size:11px;color:rgba(21,18,15,.65);background:#fafaf8;outline:none;font-family:inherit;resize:none;min-height:28px}
 .real-input:focus{border-color:var(--org);background:#fff}
-.real-input[readonly]{background:#f4f3ef;color:rgba(21,18,15,.35);cursor:default}
 .task-row.unchecked .task-plan{color:rgba(21,18,15,.5)}
 .empty{padding:14px;text-align:center}
 .empty p{font-size:12px;color:rgba(21,18,15,.25);font-style:italic;margin-bottom:7px}
-.add-inline{padding:5px 14px;border-radius:20px;border:1px dashed rgba(21,18,15,.16);background:transparent;cursor:pointer;font-size:11px;color:rgba(21,18,15,.3);font-weight:500;min-height:32px}
+.add-inline{padding:5px 14px;border-radius:20px;border:1px dashed rgba(21,18,15,.15);background:transparent;cursor:pointer;font-size:11px;color:rgba(21,18,15,.3);font-weight:500}
 .add-inline:active{border-color:var(--org);color:var(--org)}
 .add-more-row{padding:6px 10px;border-top:1px dashed rgba(21,18,15,.05)}
-.fab{position:fixed;bottom:20px;right:16px;width:50px;height:50px;border-radius:50%;background:var(--org);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(208,112,72,.4);display:none;align-items:center;justify-content:center;z-index:40}
+.fab{position:fixed;bottom:22px;right:16px;width:50px;height:50px;border-radius:50%;background:var(--org);color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(208,112,72,.4);display:none;align-items:center;justify-content:center;z-index:40}
 /* MODAL */
 .mbg{position:fixed;inset:0;background:rgba(21,18,15,.55);z-index:100;display:none;align-items:flex-end;justify-content:center}
 .modal{background:#fff;border-radius:20px 20px 0 0;padding:1.1rem .9rem 2rem;width:100%;max-width:520px;max-height:94vh;overflow-y:auto}
@@ -139,27 +147,57 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .fi:focus,.fs:focus,.fta:focus{border-color:var(--org);background:#fff}
 .fta{resize:vertical;min-height:58px}
 .m-acts{display:flex;gap:6px;margin-top:12px}
-.btn-c{flex:1;padding:11px;border-radius:9px;border:1px solid rgba(21,18,15,.12);background:#f4f3ef;font-size:13px;cursor:pointer;color:rgba(21,18,15,.5);font-weight:600;min-height:44px}
-.btn-s{flex:2;padding:11px;border-radius:9px;border:none;background:var(--org);font-size:13px;cursor:pointer;color:#fff;font-weight:700;min-height:44px}
+.btn-c{flex:1;padding:11px;border-radius:9px;border:1px solid rgba(21,18,15,.12);background:#f4f3ef;font-size:13px;cursor:pointer;color:rgba(21,18,15,.5);font-weight:600}
+.btn-s{flex:2;padding:11px;border-radius:9px;border:none;background:var(--org);font-size:13px;cursor:pointer;color:#fff;font-weight:700}
 .btn-row{display:flex;flex-direction:column;gap:7px}
-.btn-full{width:100%;padding:11px;border-radius:9px;border:1px solid rgba(21,18,15,.12);background:#f8f7f4;font-size:13px;cursor:pointer;color:var(--blk);font-weight:600;text-align:left;display:flex;align-items:center;gap:8px;min-height:44px}
-.btn-full:active{background:#eee}
-.btn-danger{color:#c0392b;border-color:#f7c1c1;background:#fff5f5}
-.hint{font-size:10px;color:rgba(21,18,15,.35);margin-top:3px;font-style:italic}
-.imp-zone{border:2px dashed rgba(21,18,15,.15);border-radius:10px;padding:1rem;text-align:center;cursor:pointer;margin-top:6px}
-.imp-zone:hover{border-color:var(--org)}
-.imp-zone p{font-size:12px;color:rgba(21,18,15,.35);margin-bottom:6px}
-@media(min-width:600px){
-  .mbg{align-items:center}
-  .modal{border-radius:14px;margin:1rem;max-height:88vh}
-  .stat-grid{grid-template-columns:repeat(4,1fr)}
-}
+.btn-full{width:100%;padding:11px;border-radius:9px;border:1px solid rgba(21,18,15,.12);background:#f8f7f4;font-size:13px;cursor:pointer;color:var(--blk);font-weight:600;text-align:left;display:flex;align-items:center;gap:8px}
+.btn-full.btn-danger{color:#c0392b;border-color:#f7c1c1;background:#fff5f5}
+.hint{font-size:10px;color:rgba(21,18,15,.32);margin-top:1px;font-weight:400}
+.imp-zone{border:2px dashed rgba(21,18,15,.14);border-radius:10px;padding:1rem;text-align:center;cursor:pointer;margin-top:6px}
+.imp-zone p{font-size:12px;color:rgba(21,18,15,.32);margin-bottom:4px}
+.live-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;padding:2px 7px;border-radius:20px;background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;margin-left:4px}
+.live-pulse{width:5px;height:5px;border-radius:50%;background:#4caf50;animation:pulse 1.5s infinite}
+@media(min-width:600px){.mbg{align-items:center}.modal{border-radius:14px;margin:1rem;max-height:88vh}}
 </style>
 </head>
 <body>
 
-<!-- ROLE -->
-<div id="sRole" class="screen" style="display:flex">
+<!-- ── SETUP FIREBASE ── -->
+<div id="sSetup" class="screen">
+  <div class="logo-row"><div class="logo-mark">ATV</div><div class="logo-txt">Creative Asia</div></div>
+  <div class="s-title">Setup Database</div>
+  <div class="s-sub">Koneksi ke Firebase — sekali saja</div>
+  <div class="setup-box">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-txt">Buka <strong style="color:var(--gld)">console.firebase.google.com</strong> → Buat project baru (gratis)</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-txt">Di menu kiri → <strong style="color:var(--gld)">Realtime Database</strong> → Create Database → pilih region → <em>Start in test mode</em></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-txt">Di tab <strong style="color:var(--gld)">Rules</strong>, paste ini lalu Publish:
+        <span class="step-url">{"rules":{".read":true,".write":true}}</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-txt">Copy <strong style="color:var(--gld)">Database URL</strong> (contoh):
+        <span class="step-url">https://nama-project-rtdb.firebaseio.com</span>
+      </div>
+    </div>
+    <div class="setup-sep"></div>
+    <label style="font-size:10px;color:rgba(244,239,230,.45);font-weight:600;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px">Database URL</label>
+    <input class="fi-dark" id="fbUrlIn" placeholder="https://xxx-default-rtdb.firebaseio.com" autocomplete="off" autocorrect="off" spellcheck="false">
+    <button class="btn-org" onclick="saveConfig()" id="btnConnect">🔗 Hubungkan & Mulai</button>
+    <div class="setup-err" id="setupErr"></div>
+  </div>
+</div>
+
+<!-- ── ROLE ── -->
+<div id="sRole" class="screen">
   <div class="logo-row"><div class="logo-mark">ATV</div><div class="logo-txt">Creative Asia</div></div>
   <div class="s-title">Daily Realisasi</div>
   <div class="s-sub">Timeframe Internal · 2026</div>
@@ -169,33 +207,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 </div>
 
-<!-- PIC -->
+<!-- ── PIC ── -->
 <div id="sPic" class="screen">
   <button class="back-btn" onclick="sw('sRole')">←</button>
   <div class="logo-row"><div class="logo-mark">ATV</div></div>
   <div class="s-title">Pilih PIC Kamu</div>
   <div class="s-sub">Login sebagai anggota tim</div>
   <div class="pic-cards">
-    <div class="pic-card" onclick="enter('tim','PAK AGUNG')">
-      <div class="pc-dot" style="background:var(--grn)"></div>
-      <div><div class="pc-name">PAK AGUNG</div><div class="pc-desc">Business & Client Relations</div></div>
-    </div>
-    <div class="pic-card" onclick="enter('tim','CREATIVE')">
-      <div class="pc-dot" style="background:var(--org)"></div>
-      <div><div class="pc-name">CREATIVE</div><div class="pc-desc">Konten, Brief & Strategi</div></div>
-    </div>
-    <div class="pic-card" onclick="enter('tim','PRODUKSI')">
-      <div class="pc-dot" style="background:#4a2d6b"></div>
-      <div><div class="pc-name">PRODUKSI</div><div class="pc-desc">Editing & QC Video</div></div>
-    </div>
-    <div class="pic-card" onclick="enter('tim','DESIGNER')">
-      <div class="pc-dot" style="background:var(--dsb)"></div>
-      <div><div class="pc-name">DESIGNER</div><div class="pc-desc">Visual & Desain Grafis</div></div>
-    </div>
+    <div class="pic-card" onclick="enter('tim','PAK AGUNG')"><div class="pc-dot" style="background:var(--grn)"></div><div><div class="pc-name">PAK AGUNG</div><div class="pc-desc">Business & Client Relations</div></div></div>
+    <div class="pic-card" onclick="enter('tim','CREATIVE')"><div class="pc-dot" style="background:var(--org)"></div><div><div class="pc-name">CREATIVE</div><div class="pc-desc">Konten, Brief & Strategi</div></div></div>
+    <div class="pic-card" onclick="enter('tim','PRODUKSI')"><div class="pc-dot" style="background:#4a2d6b"></div><div><div class="pc-name">PRODUKSI</div><div class="pc-desc">Editing & QC Video</div></div></div>
+    <div class="pic-card" onclick="enter('tim','DESIGNER')"><div class="pc-dot" style="background:var(--dsb)"></div><div><div class="pc-name">DESIGNER</div><div class="pc-desc">Visual & Desain Grafis</div></div></div>
   </div>
 </div>
 
-<!-- PWD -->
+<!-- ── PWD ── -->
 <div id="sPwd" class="screen">
   <button class="back-btn" onclick="sw('sRole')">←</button>
   <div class="logo-row"><div class="logo-mark">ATV</div></div>
@@ -208,22 +234,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 </div>
 
-<!-- APP -->
+<!-- ── APP ── -->
 <div id="app" style="display:none">
   <div class="hdr">
     <button class="hdr-back" onclick="logout()">←</button>
-    <div class="hdr-title">ATV · Daily Realisasi</div>
+    <div class="hdr-title">ATV · Daily Realisasi <span class="live-badge"><span class="live-pulse"></span>LIVE</span></div>
     <span id="badge" class="badge"></span>
     <button class="hdr-btn" onclick="openExport()" title="Export/Import">⬇️</button>
-    <button class="hdr-btn" id="btnCfg" onclick="openCfg()" style="display:none" title="Pengaturan">⚙️</button>
+    <button class="hdr-btn" id="btnCfg" onclick="openCfg()" style="display:none">⚙️</button>
   </div>
   <div class="sync-bar">
-    <div class="sync-info"><span class="dot" id="syncDot"></span><span id="syncTxt">Memuat...</span></div>
+    <div class="sync-info"><span class="dot" id="syncDot"></span><span id="syncTxt">Menghubungkan...</span></div>
     <button class="sync-btn" onclick="doSync()">↻ Sync</button>
   </div>
-  <div class="month-banner" id="monthBanner">
+  <div class="month-banner">
     <div class="month-big" id="monthBig">—</div>
-    <div class="month-sub" id="monthSub">Pilih minggu di bawah</div>
+    <div class="month-sub" id="monthSub">Memuat...</div>
   </div>
   <div class="nav" id="navWrap"></div>
   <div id="statsWrap" style="display:none">
@@ -237,7 +263,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <button class="fab" id="fab" onclick="openAdd(null)">＋</button>
 </div>
 
-<!-- TASK MODAL -->
+<!-- ── TASK MODAL ── -->
 <div class="mbg" id="mTask" onclick="bgClose(event,'mTask')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title" id="mTitle">Tambah Plan</div>
@@ -248,9 +274,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="fg"><label class="fl">Plan / Kegiatan</label><textarea class="fta" id="fPlan" placeholder="Deskripsi kegiatan..."></textarea></div>
     <div class="fg" id="fPicWrap"><label class="fl">PIC</label>
-      <select class="fs" id="fPic">
-        <option>PAK AGUNG</option><option>CREATIVE</option><option>PRODUKSI</option><option>DESIGNER</option>
-      </select>
+      <select class="fs" id="fPic"><option>PAK AGUNG</option><option>CREATIVE</option><option>PRODUKSI</option><option>DESIGNER</option></select>
     </div>
     <div class="m-acts">
       <button class="btn-c" onclick="closeM('mTask')">Batal</button>
@@ -259,59 +283,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 </div>
 
-<!-- EXPORT/IMPORT MODAL -->
+<!-- ── EXPORT/IMPORT ── -->
 <div class="mbg" id="mExport" onclick="bgClose(event,'mExport')">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-title">📤 Export & Import Data</div>
-    <p style="font-size:11px;color:rgba(21,18,15,.4);margin-bottom:10px">Export semua data realisasi tim ATV</p>
+    <div class="modal-title">📤 Export & Import</div>
     <div class="btn-row">
-      <button class="btn-full" onclick="exportCSV()">📄 <div><div>Download CSV</div><div class="hint">Untuk Google Sheets, Notepad</div></div></button>
-      <button class="btn-full" onclick="exportExcel()">📊 <div><div>Download Excel (.xlsx)</div><div class="hint">Langsung buka di Microsoft Excel</div></div></button>
-      <button class="btn-full" onclick="exportPDF()">🖨️ <div><div>Download PDF</div><div class="hint">Untuk dicetak / arsip formal</div></div></button>
-      <button class="btn-full" onclick="exportJSON()">💾 <div><div>Download JSON</div><div class="hint">Backup / restore penuh</div></div></button>
+      <button class="btn-full" onclick="exportCSV()">📄 <div><div>Download CSV</div><div class="hint">Google Sheets, Notepad</div></div></button>
+      <button class="btn-full" onclick="exportExcel()">📊 <div><div>Download Excel (.xlsx)</div><div class="hint">Microsoft Excel</div></div></button>
+      <button class="btn-full" onclick="exportPDF()">🖨️ <div><div>Download PDF</div><div class="hint">Print / arsip formal</div></div></button>
+      <button class="btn-full" onclick="exportJSON()">💾 <div><div>Download JSON (Backup)</div><div class="hint">Backup penuh semua data</div></div></button>
     </div>
-    <div style="margin:12px 0 6px;font-size:10px;font-weight:700;color:rgba(21,18,15,.4);text-transform:uppercase;letter-spacing:.5px">Import Data</div>
+    <div style="margin:12px 0 6px;font-size:10px;font-weight:700;color:rgba(21,18,15,.38);text-transform:uppercase;letter-spacing:.5px">Import Data</div>
     <div class="imp-zone" onclick="document.getElementById('impFile').click()">
-      <p>Klik atau drag file ke sini</p>
-      <p style="font-size:11px;color:rgba(21,18,15,.28)">Format didukung: CSV, Excel (.xlsx), JSON</p>
+      <p>Klik untuk pilih file</p>
+      <p style="font-size:11px;color:rgba(21,18,15,.25)">CSV, Excel (.xlsx), JSON</p>
       <input type="file" id="impFile" accept=".csv,.xlsx,.xls,.json" style="display:none" onchange="handleImport(this)">
     </div>
     <div id="impStatus" style="font-size:11px;color:var(--grn);margin-top:6px;min-height:14px"></div>
-    <div class="m-acts" style="margin-top:10px">
-      <button class="btn-s" onclick="closeM('mExport')">Tutup</button>
-    </div>
+    <div class="m-acts" style="margin-top:10px"><button class="btn-s" onclick="closeM('mExport')">Tutup</button></div>
   </div>
 </div>
 
-<!-- CFG MODAL -->
+<!-- ── CFG MODAL ── -->
 <div class="mbg" id="mCfg" onclick="bgClose(event,'mCfg')">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-title">⚙️ Admin Panel</div>
     <div class="btn-row">
       <button class="btn-full" onclick="openPwdChange()">🔑 <div>Ubah Password</div></button>
+      <button class="btn-full" onclick="resetFbConfig()">🔗 <div><div>Ganti Firebase URL</div><div class="hint" id="currentFbUrl" style="word-break:break-all;color:rgba(21,18,15,.3)">Memuat...</div></div></button>
       <button class="btn-full btn-danger" onclick="nukeWeek()">🗑 <div>Hapus Data Minggu Ini</div></button>
-      <button class="btn-full" onclick="showMaintInfo()">📋 <div><div>Info Maintenance</div><div class="hint">Cara update kode via Claude & GitHub</div></div></button>
     </div>
-    <div id="maintInfo" style="display:none;margin-top:10px;padding:10px;background:#f8f7f4;border-radius:9px;font-size:11px;line-height:1.6;color:rgba(21,18,15,.6)">
-      <strong>Cara update kode:</strong><br>
-      1. Buka percakapan di Claude<br>
-      2. Upload file HTML ini atau paste kode<br>
-      3. Minta Claude revisi fitur yang diinginkan<br>
-      4. Copy kode baru → simpan sebagai .html<br>
-      5. Upload ke GitHub repo (drag & drop di web)<br>
-      6. GitHub Pages otomatis update<br>
-      <br><strong>Repo GitHub:</strong> atv-daily-realisasi
+    <div style="margin-top:12px;padding:10px;background:#f8f7f4;border-radius:9px;font-size:11px;line-height:1.7;color:rgba(21,18,15,.5)">
+      <strong>🔧 Cara update kode via Claude:</strong><br>
+      1. Download file HTML ini (Ctrl+S di browser)<br>
+      2. Upload ke Claude → minta revisi fitur<br>
+      3. Copy kode baru → simpan sebagai .html<br>
+      4. Upload ke GitHub repo → GitHub Pages auto-update<br>
+      <span style="color:var(--grn);font-weight:600">GitHub repo: atv-daily-realisasi</span>
     </div>
-    <div class="m-acts" style="margin-top:10px">
-      <button class="btn-s" onclick="closeM('mCfg')">Tutup</button>
-    </div>
+    <div class="m-acts" style="margin-top:10px"><button class="btn-s" onclick="closeM('mCfg')">Tutup</button></div>
   </div>
 </div>
 
-<!-- PWD CHANGE -->
+<!-- ── PWD CHANGE ── -->
 <div class="mbg" id="mPwd" onclick="bgClose(event,'mPwd')">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-title">Ubah Password</div>
+    <div class="modal-title">Ubah Password Admin</div>
     <div class="fg"><label class="fl">Password Baru</label><input class="fi" type="password" id="np1" autocomplete="new-password"></div>
     <div class="fg"><label class="fl">Konfirmasi</label><input class="fi" type="password" id="np2" autocomplete="new-password"></div>
     <div class="pwd-err" id="npErr"></div>
@@ -320,31 +337,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <script>
-// ══ CONSTANTS ══════════════════════════════════════════════
-const BLN=['','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-const BLN_FULL=['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-const HRI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-const PIC_ORDER=['PAK AGUNG','CREATIVE','PRODUKSI','DESIGNER'];
-const LK='atv_v7',PK='atv_pwd_v2';
-const CK='atv_creative_2026_v7';
+// ══ CONFIG ══════════════════════════════════════════════
+const FBKEY='atv_fb_url_v8';
+const PWKEY='atv_pwd_v2';
+const LSKEY='atv_local_v8';
+const FB_NODE='atv_data_v8';
+let FB_URL=localStorage.getItem(FBKEY)||'';
 
-// ══ SEED DATA ══════════════════════════════════════════════
+// ══ SEED DATA (Histori — hardcoded, tidak disimpan di Firebase) ══
 const SEED={
 '2026-05-25':[
   {id:1,w:'09.00 - 10.00',p:'Buat to do list hari ini, prepare',pic:'CREATIVE',chk:false,real:''},
   {id:2,w:'09.00 - 12.00',p:'Meeting Team (Menyamakan Persepsi)',pic:'PAK AGUNG',chk:false,real:''},
   {id:3,w:'09.00 - 11.00',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:false,real:''},
-  {id:4,w:'10.00 - 10.02',p:'Delegasi Kak Fenny Buat 2 Cover Reels Joce',pic:'CREATIVE',chk:false,real:''},
-  {id:5,w:'10.05 - 10.30',p:'Buat keterangan brief & delegasi Request Ibu Maya',pic:'CREATIVE',chk:false,real:''},
-  {id:6,w:'11.00 - 12.00',p:'Meeting Team (Menyamakan Persepsi)',pic:'CREATIVE',chk:false,real:''},
-  {id:7,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
-  {id:8,w:'13.00 - 14.00',p:'Meeting Client Maheswara',pic:'CREATIVE',chk:false,real:''},
-  {id:9,w:'13.00 - 14.00',p:'Update Timeframe & Timeline',pic:'PRODUKSI',chk:false,real:''},
-  {id:10,w:'14.00 - 16.30',p:'Editing 4 Content Tale Studio',pic:'PRODUKSI',chk:false,real:''},
-  {id:11,w:'14.00 - 16.00',p:'Meeting Client Josei',pic:'PAK AGUNG',chk:false,real:''},
-  {id:12,w:'15.00 - 16.45',p:'Buat Brief Desain Story Maheswara',pic:'CREATIVE',chk:false,real:''},
-  {id:13,w:'17.00 - 18.00',p:'Editing 3 Content Video Maheswara',pic:'PRODUKSI',chk:false,real:''},
-  {id:14,w:'17.30 - 18.00',p:'Buat script VO Bu Maya promosi Bride Story JCC',pic:'CREATIVE',chk:false,real:''},
+  {id:4,w:'10.05 - 10.30',p:'Buat keterangan brief & delegasi Request Ibu Maya',pic:'CREATIVE',chk:false,real:''},
+  {id:5,w:'11.00 - 12.00',p:'Meeting Team (Menyamakan Persepsi)',pic:'CREATIVE',chk:false,real:''},
+  {id:6,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
+  {id:7,w:'13.00 - 14.00',p:'Meeting Client Maheswara',pic:'CREATIVE',chk:false,real:''},
+  {id:8,w:'13.00 - 14.00',p:'Update Timeframe & Timeline',pic:'PRODUKSI',chk:false,real:''},
+  {id:9,w:'14.00 - 16.30',p:'Editing 4 Content Tale Studio',pic:'PRODUKSI',chk:false,real:''},
+  {id:10,w:'14.00 - 16.00',p:'Meeting Client Josei',pic:'PAK AGUNG',chk:false,real:''},
+  {id:11,w:'17.00 - 18.00',p:'Editing 3 Content Video Maheswara',pic:'PRODUKSI',chk:false,real:''},
+  {id:12,w:'17.30 - 18.00',p:'Buat script VO Bu Maya promosi Bride Story JCC',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-05-26':[
   {id:1,w:'09.00 - 09.30',p:'Follow up produk baru Azkafun, daily update saku',pic:'CREATIVE',chk:false,real:''},
@@ -353,14 +367,13 @@ const SEED={
   {id:4,w:'10.35 - 15.00',p:'Editing 5 Content Podcast Maheswara',pic:'PRODUKSI',chk:false,real:''},
   {id:5,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:6,w:'14.00 - 16.00',p:'Meeting Client Glowsense',pic:'PAK AGUNG',chk:false,real:''},
-  {id:7,w:'16.00 - 17.00',p:'Propose desain & video terbaru',pic:'CREATIVE',chk:false,real:''},
-  {id:8,w:'17.00 - 18.00',p:'Posting & scheduling konten semua client',pic:'CREATIVE',chk:false,real:''},
+  {id:7,w:'17.00 - 18.00',p:'Posting & scheduling konten semua client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-05-28':[
   {id:1,w:'09.00 - 11.00',p:'Meeting Client Glowsense',pic:'PAK AGUNG',chk:false,real:''},
   {id:2,w:'09.15 - 12.00',p:'Editing Maheswara 3 video',pic:'PRODUKSI',chk:false,real:''},
   {id:3,w:'12.00 - 13.00',p:'Istirahat',pic:'PRODUKSI',chk:false,real:''},
-  {id:4,w:'13.00 - 14.00',p:'Revisi Content (jika ada)',pic:'PRODUKSI',chk:false,real:''},
+  {id:4,w:'13.15 - 14.00',p:'Revisi Content (jika ada)',pic:'PRODUKSI',chk:false,real:''},
   {id:5,w:'16.30 - 18.00',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:false,real:''},
 ],
 '2026-05-29':[
@@ -369,7 +382,6 @@ const SEED={
   {id:3,w:'10.00 - 16.00',p:'Ke ICE BSD event JOCE',pic:'PAK AGUNG',chk:false,real:''},
   {id:4,w:'13.00 - 16.00',p:'Berangkat & shooting Saku Laundry',pic:'CREATIVE',chk:false,real:''},
   {id:5,w:'13.15 - 18.00',p:'Shooting saku laundry',pic:'PRODUKSI',chk:false,real:''},
-  {id:6,w:'17.30 - 18.00',p:'Schedule post semua client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-02':[
   {id:1,w:'09.00 - 11.00',p:'Susun timeframe kerja minggu ini',pic:'CREATIVE',chk:false,real:''},
@@ -377,14 +389,12 @@ const SEED={
   {id:3,w:'09.30 - 10.30',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:false,real:''},
   {id:4,w:'10.30 - 12.30',p:'Meeting Client Glowsence',pic:'PAK AGUNG',chk:false,real:''},
   {id:5,w:'11.00 - 12.00',p:'Research topik podcast Maheswara',pic:'CREATIVE',chk:false,real:''},
-  {id:6,w:'11.00 - 12.00',p:'Mencari 10 Reference Konten Azkafun',pic:'PRODUKSI',chk:false,real:''},
-  {id:7,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
-  {id:8,w:'13.00 - 14.30',p:'Research lanjutan podcast Maheswara',pic:'CREATIVE',chk:false,real:''},
-  {id:9,w:'13.00 - 15.00',p:'Recycle 3 Podcast Maheswara',pic:'PRODUKSI',chk:false,real:''},
-  {id:10,w:'14.00 - 16.00',p:'Meeting Client JOSEI',pic:'PAK AGUNG',chk:false,real:''},
-  {id:11,w:'15.30 - 16.30',p:'Buat brief Maheswara (4 brief)',pic:'CREATIVE',chk:false,real:''},
-  {id:12,w:'16.15 - 18.00',p:'Shooting Azkafun',pic:'PRODUKSI',chk:false,real:'reschedule ke minggu depan karena scriptnya masih proses.'},
-  {id:13,w:'19.00 - 21.00',p:'Meeting Client Maheswara',pic:'PAK AGUNG',chk:false,real:''},
+  {id:6,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
+  {id:7,w:'13.00 - 14.30',p:'Research lanjutan podcast Maheswara',pic:'CREATIVE',chk:false,real:''},
+  {id:8,w:'13.00 - 15.00',p:'Recycle 3 Podcast Maheswara',pic:'PRODUKSI',chk:false,real:''},
+  {id:9,w:'14.00 - 16.00',p:'Meeting Client JOSEI',pic:'PAK AGUNG',chk:false,real:''},
+  {id:10,w:'16.15 - 18.00',p:'Shooting Azkafun',pic:'PRODUKSI',chk:false,real:'reschedule ke minggu depan'},
+  {id:11,w:'19.00 - 21.00',p:'Meeting Client Maheswara',pic:'PAK AGUNG',chk:false,real:''},
 ],
 '2026-06-03':[
   {id:1,w:'09.00 - 10.30',p:'Finalisasi pertanyaan podcast Maheswara',pic:'CREATIVE',chk:false,real:''},
@@ -393,8 +403,7 @@ const SEED={
   {id:4,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:5,w:'13.00 - 14.00',p:'Buat brief Maheswara pertanyaan shooting',pic:'CREATIVE',chk:false,real:''},
   {id:6,w:'13.00 - 16.00',p:'Editing 3 Konten Azkafun',pic:'PRODUKSI',chk:false,real:'belum shooting diganti tambahan output maheswara.'},
-  {id:7,w:'15.30 - 16.30',p:'QC video Maheswara & list revisi',pic:'CREATIVE',chk:false,real:''},
-  {id:8,w:'17.00 - 18.00',p:'Posting & schedule posting content',pic:'CREATIVE',chk:false,real:''},
+  {id:7,w:'17.00 - 18.00',p:'Posting & schedule posting content',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-04':[
   {id:1,w:'09.00 - 09.30',p:'Final cek pertanyaan podcast',pic:'CREATIVE',chk:false,real:''},
@@ -403,8 +412,7 @@ const SEED={
   {id:4,w:'10.00 - 16.00',p:'Shooting Maheswara',pic:'PRODUKSI',chk:false,real:''},
   {id:5,w:'10.30 - 11.00',p:'Shooting Podcast Maheswara — Delegasi editor',pic:'CREATIVE',chk:false,real:'Buat timeline menuju pameran bridestory'},
   {id:6,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
-  {id:7,w:'13.00 - 17.00',p:'Buat list request ibu Maya by chat',pic:'CREATIVE',chk:false,real:''},
-  {id:8,w:'17.00 - 17.30',p:'QC video & desain',pic:'CREATIVE',chk:false,real:''},
+  {id:7,w:'17.00 - 17.30',p:'QC video & desain',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-05':[
   {id:1,w:'09.00 - 11.00',p:'Meeting Client Glowsence',pic:'PAK AGUNG',chk:false,real:''},
@@ -430,19 +438,17 @@ const SEED={
   {id:1,w:'09.00 - 11.00',p:'Meeting Client Josei',pic:'PAK AGUNG',chk:false,real:''},
   {id:2,w:'09.15 - 11.00',p:'Editing 4 Content Video Azkafun',pic:'PRODUKSI',chk:false,real:''},
   {id:3,w:'09.30 - 10.30',p:'Brief Maheswara (4 brief)',pic:'CREATIVE',chk:false,real:'6 output'},
-  {id:4,w:'11.00 - 11.30',p:'Brief Tale Studio (1 brief)',pic:'CREATIVE',chk:false,real:''},
-  {id:5,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
-  {id:6,w:'13.00 - 15.00',p:'Editing 4 Content Video Maheswara',pic:'PRODUKSI',chk:false,real:''},
-  {id:7,w:'14.00 - 16.00',p:'Meeting Client Glowsence',pic:'PAK AGUNG',chk:false,real:''},
-  {id:8,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
+  {id:4,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
+  {id:5,w:'13.00 - 15.00',p:'Editing 4 Content Video Maheswara',pic:'PRODUKSI',chk:false,real:''},
+  {id:6,w:'14.00 - 16.00',p:'Meeting Client Glowsence',pic:'PAK AGUNG',chk:false,real:''},
+  {id:7,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-10':[
   {id:1,w:'09.15 - 11.00',p:'Editing 3 Content Video Azkafun',pic:'PRODUKSI',chk:false,real:''},
   {id:2,w:'09.30 - 10.30',p:'Brief Maheswara (4 brief)',pic:'CREATIVE',chk:false,real:''},
   {id:3,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:4,w:'13.00 - 15.00',p:'Editing 4 Content Video Maheswara',pic:'PRODUKSI',chk:false,real:''},
-  {id:5,w:'13.15 - 14.15',p:'Susun 10 pertanyaan konten reguler Maheswara',pic:'CREATIVE',chk:false,real:''},
-  {id:6,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
+  {id:5,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-11':[
   {id:1,w:'09.00 - 10.00',p:'Brief Maheswara (3 brief)',pic:'CREATIVE',chk:false,real:''},
@@ -454,19 +460,16 @@ const SEED={
 ],
 '2026-06-12':[
   {id:1,w:'09.00 - 11.00',p:'Meeting Client Glowsence',pic:'PAK AGUNG',chk:false,real:''},
-  {id:2,w:'09.00 - 10.00',p:'Brief Maheswara (3 brief)',pic:'CREATIVE',chk:false,real:''},
-  {id:3,w:'09.15 - 15.00',p:'Editing 10 Content Saku Laundry',pic:'PRODUKSI',chk:false,real:'Baru jadi 8 konten karena kurang B roll'},
-  {id:4,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
-  {id:5,w:'16.30 - 18.00',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:false,real:''},
-  {id:6,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
-  {id:7,w:'20.00 - 21.30',p:'Meeting dengan Adrian Laptop',pic:'PAK AGUNG',chk:false,real:''},
+  {id:2,w:'09.15 - 15.00',p:'Editing 10 Content Saku Laundry',pic:'PRODUKSI',chk:false,real:'Baru jadi 8 konten karena kurang B roll'},
+  {id:3,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
+  {id:4,w:'16.30 - 18.00',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:false,real:''},
+  {id:5,w:'20.00 - 21.30',p:'Meeting dengan Adrian Laptop',pic:'PAK AGUNG',chk:false,real:''},
 ],
 '2026-06-15':[
   {id:1,w:'09.00 - 10.30',p:'Update Time Frame 1 Minggu',pic:'PRODUKSI',chk:false,real:''},
-  {id:2,w:'10.30 - 11.00',p:'Editing Saku Laundry',pic:'PRODUKSI',chk:false,real:''},
+  {id:2,w:'10.30 - 12.00',p:'Editing Saku Laundry',pic:'PRODUKSI',chk:false,real:''},
   {id:3,w:'12.00 - 13.00',p:'Istirahat',pic:'PRODUKSI',chk:false,real:''},
   {id:4,w:'13.30 - 17.00',p:'Editing 5 Konten Maheswara',pic:'PRODUKSI',chk:false,real:''},
-  {id:5,w:'17.50 - 18.00',p:'Update Realisasi',pic:'PRODUKSI',chk:false,real:''},
 ],
 '2026-06-17':[
   {id:1,w:'08.00 - 09.15',p:'Meeting Client Josei',pic:'PAK AGUNG',chk:false,real:''},
@@ -476,18 +479,14 @@ const SEED={
   {id:5,w:'10.15 - 11.00',p:'Meeting Client Glowsesnse',pic:'PAK AGUNG',chk:false,real:''},
   {id:6,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:7,w:'14.00 - 15.00',p:'Editing 2 Konten Saku Laundry',pic:'PRODUKSI',chk:false,real:''},
-  {id:8,w:'16.00 - 17.00',p:'QC hasil desain masuk',pic:'CREATIVE',chk:false,real:''},
-  {id:9,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
-  {id:10,w:'17.50 - 18.00',p:'Update Realisasi',pic:'PRODUKSI',chk:false,real:''},
+  {id:8,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-18':[
   {id:1,w:'09.00 - 10.00',p:'Brief Maheswara (4 brief)',pic:'CREATIVE',chk:false,real:''},
   {id:2,w:'09.15 - 14.00',p:'Editing 6 Konten Maheswara',pic:'PRODUKSI',chk:false,real:''},
   {id:3,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:4,w:'13.00 - 14.00',p:'Breakdown konsep Adrian Laptop',pic:'CREATIVE',chk:false,real:''},
-  {id:5,w:'14.00 - 15.00',p:'Susun draft content plan 1 minggu Adrian Laptop',pic:'CREATIVE',chk:false,real:''},
-  {id:6,w:'15.00 - 16.30',p:'Mencari Video Testimoni, BTS, dan Rekomendasi',pic:'PRODUKSI',chk:false,real:''},
-  {id:7,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
+  {id:5,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-19':[
   {id:1,w:'09.00 - 10.00',p:'Brief Maheswara (4 brief)',pic:'CREATIVE',chk:false,real:''},
@@ -495,8 +494,7 @@ const SEED={
   {id:3,w:'10.00 - 11.30',p:'Meeting Client Josei',pic:'PAK AGUNG',chk:false,real:''},
   {id:4,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:5,w:'14.00 - 15.00',p:'Meeting Client Glowsense',pic:'PAK AGUNG',chk:false,real:''},
-  {id:6,w:'16.00 - 17.15',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:false,real:''},
-  {id:7,w:'17.00 - 18.00',p:'Posting seluruh client & schedule konten weekend',pic:'CREATIVE',chk:false,real:''},
+  {id:6,w:'17.00 - 18.00',p:'Posting seluruh client & schedule konten weekend',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-22':[
   {id:1,w:'08.30 - 09.30',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:true,real:''},
@@ -507,19 +505,17 @@ const SEED={
   {id:6,w:'11.30 - 15.00',p:'Editing 7 Content Maheswara',pic:'PRODUKSI',chk:true,real:''},
   {id:7,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:true,real:''},
   {id:8,w:'13.00 - 14.00',p:'Brief Maheswara (4 brief)',pic:'CREATIVE',chk:true,real:''},
-  {id:9,w:'14.00 - 14.45',p:'Brief Adrian Laptop (3 brief)',pic:'CREATIVE',chk:true,real:''},
-  {id:10,w:'15.00 - 16.00',p:'QC Content',pic:'PRODUKSI',chk:true,real:''},
-  {id:11,w:'17.15 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:true,real:''},
+  {id:9,w:'15.00 - 16.00',p:'QC Content',pic:'PRODUKSI',chk:true,real:''},
+  {id:10,w:'17.15 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:true,real:''},
 ],
 '2026-06-23':[
   {id:1,w:'09.00 - 10.00',p:'Review hasil edit Maheswara',pic:'CREATIVE',chk:false,real:''},
   {id:2,w:'09.15 - 14.00',p:'Editing 7 Content Maheswara',pic:'PRODUKSI',chk:false,real:''},
   {id:3,w:'11.00 - 12.00',p:'Brief Maheswara (3 brief)',pic:'CREATIVE',chk:false,real:''},
   {id:4,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
-  {id:5,w:'13.00 - 13.45',p:'Brief Adrian Laptop (3 brief)',pic:'CREATIVE',chk:false,real:''},
-  {id:6,w:'14.00 - 15.00',p:'QC',pic:'PRODUKSI',chk:false,real:''},
-  {id:7,w:'16.00 - 17.30',p:'Mencari Referensi Content Azkafun',pic:'PRODUKSI',chk:false,real:'Client Azkafun Di hold'},
-  {id:8,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
+  {id:5,w:'14.00 - 15.00',p:'QC',pic:'PRODUKSI',chk:false,real:''},
+  {id:6,w:'16.00 - 17.30',p:'Mencari Referensi Content Azkafun',pic:'PRODUKSI',chk:false,real:'Client Azkafun Di hold'},
+  {id:7,w:'17.00 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-24':[
   {id:1,w:'09.00 - 10.00',p:'Monitoring konten Maheswara Wedding Market Fair',pic:'CREATIVE',chk:false,real:''},
@@ -527,16 +523,14 @@ const SEED={
   {id:3,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:4,w:'13.00 - 14.00',p:'Brief Adrian Laptop (4 brief)',pic:'CREATIVE',chk:false,real:''},
   {id:5,w:'14.00 - 15.00',p:'QC',pic:'PRODUKSI',chk:false,real:''},
-  {id:6,w:'16.00 - 17.30',p:'Mencari Referensi Content Azkafun',pic:'PRODUKSI',chk:false,real:'Client Azkafun Di hold'},
-  {id:7,w:'17.15 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
+  {id:6,w:'17.15 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-25':[
   {id:1,w:'09.00 - 10.00',p:'Review progres seluruh client',pic:'CREATIVE',chk:false,real:''},
   {id:2,w:'09.15 - 14.00',p:'Editing 7 Content Maheswara',pic:'PRODUKSI',chk:false,real:''},
   {id:3,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
   {id:4,w:'14.00 - 16.30',p:'Training tim Adrian Laptop',pic:'PAK AGUNG',chk:false,real:''},
-  {id:5,w:'15.30 - 17.00',p:'Upload Thread Maheswara (maks. 6 konten)',pic:'CREATIVE',chk:false,real:'kendala memori hp penuh'},
-  {id:6,w:'17.30 - 18.00',p:'Susun prioritas minggu depan',pic:'CREATIVE',chk:false,real:''},
+  {id:5,w:'17.30 - 18.00',p:'Susun prioritas minggu depan',pic:'CREATIVE',chk:false,real:''},
 ],
 '2026-06-26':[
   {id:1,w:'08.30 - 09.30',p:'Meeting Client Qwell',pic:'PAK AGUNG',chk:false,real:'Mundur jadi 16.30'},
@@ -545,47 +539,44 @@ const SEED={
   {id:4,w:'09.30 - 10.30',p:'Meeting Client Josei',pic:'PAK AGUNG',chk:false,real:''},
   {id:5,w:'10.45 - 11.30',p:'Meeting Glowssence',pic:'PAK AGUNG',chk:false,real:'Mundur jadi besok'},
   {id:6,w:'12.00 - 13.00',p:'Istirahat',pic:'CREATIVE',chk:false,real:''},
-  {id:7,w:'13.00 - 14.00',p:'Brief Maheswara (4 brief)',pic:'CREATIVE',chk:false,real:''},
-  {id:8,w:'14.00 - 15.00',p:'QC',pic:'PRODUKSI',chk:false,real:''},
-  {id:9,w:'17.15 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
-  {id:10,w:'17.30 - 18.00',p:'Update Realisasi',pic:'PRODUKSI',chk:false,real:''},
+  {id:7,w:'17.15 - 18.00',p:'Posting seluruh client',pic:'CREATIVE',chk:false,real:''},
 ]};
 
-// ══ KALENDER ═══════════════════════════════════════════════
-const MONTH_ID=['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+// ══ KALENDER ════════════════════════════════════════════
+const BLN=['','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+const BLN_F=['','Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+const HRI=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+const PIC_ORDER=['PAK AGUNG','CREATIVE','PRODUKSI','DESIGNER'];
+const LIBUR={'2026-05-27':'Idul Adha','2026-06-01':'Hari Lahir Pancasila','2026-06-16':'Tahun Baru Islam 1448 H','2026-08-17':'HUT RI'};
+
 function isoDate(d){return d.toISOString().slice(0,10);}
 function mondayOf(d){const x=new Date(d);const day=x.getDay();x.setDate(x.getDate()+(day===0?-6:1-day));return x;}
 function buildWeeks(s,e){
-  let cur=mondayOf(new Date(s+'T00:00:00'));
-  const end=new Date(e+'T00:00:00'),weeks=[],mc={};
+  let cur=mondayOf(new Date(s+'T00:00:00'));const end=new Date(e+'T00:00:00'),weeks=[],mc={};
   while(cur<=end){
-    const dates=[];
-    for(let i=0;i<5;i++){const dd=new Date(cur);dd.setDate(cur.getDate()+i);dates.push(isoDate(dd));}
-    const ref=new Date(dates[2]+'T00:00:00');
-    const mk=ref.getFullYear()+'-'+(ref.getMonth()+1);
-    mc[mk]=(mc[mk]||0)+1;
-    weeks.push({lbl:`W${mc[mk]} ${MONTH_ID[ref.getMonth()+1].slice(0,3)}`,monthKey:mk,monthName:MONTH_ID[ref.getMonth()+1],year:ref.getFullYear(),dates});
+    const dates=[];for(let i=0;i<5;i++){const dd=new Date(cur);dd.setDate(cur.getDate()+i);dates.push(isoDate(dd));}
+    const ref=new Date(dates[2]+'T00:00:00');const mk=ref.getFullYear()+'-'+(ref.getMonth()+1);mc[mk]=(mc[mk]||0)+1;
+    weeks.push({lbl:`W${mc[mk]} ${BLN_F[ref.getMonth()+1].slice(0,3)}`,monthName:BLN_F[ref.getMonth()+1],year:ref.getFullYear(),dates});
     cur=new Date(cur);cur.setDate(cur.getDate()+7);
   }
   return weeks;
 }
 function futureEnd(){const e=new Date();e.setMonth(e.getMonth()+3);return isoDate(e);}
 const ALL_WEEKS=buildWeeks('2026-05-25',futureEnd());
-const LIBUR={'2026-05-27':'Idul Adha','2026-06-01':'Hari Lahir Pancasila','2026-06-16':'Tahun Baru Islam 1448 H','2026-08-17':'HUT RI'};
 
-// ══ STATE ══════════════════════════════════════════════════
+// ══ STATE ═══════════════════════════════════════════════
 let DATA={},role='',myPic='',activeWeek=0,activeFilter='ALL';
-let editId=null,editDate=null,modalMode='add',pollTimer=null,lastHash='';
+let editId=null,editDate=null,modalMode='add',syncTimer=null,lastHash='';
 
 function today(){const n=new Date();return`${n.getFullYear()}-${z(n.getMonth()+1)}-${z(n.getDate())}`;}
 function z(n){return String(n).padStart(2,'0');}
 function isRO(d){return d<'2026-06-27';}
-function getPwd(){return localStorage.getItem(PK)||'atv2026';}
-function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(Math.imul(31,h)+s.charCodeAt(i))|0;return h.toString(36);}
+function getPwd(){return localStorage.getItem(PWKEY)||'atv2026';}
+function hsh(s){let h=0;for(let i=0;i<s.length;i++)h=(Math.imul(31,h)+s.charCodeAt(i))|0;return h.toString(36);}
 function pt(w){const r=w.replace(/\./g,':').replace(/\s/g,'').split('-')[0];const[h,m]=r.split(':').map(Number);return h*60+(m||0);}
 function sortT(a){return[...a].sort((x,y)=>pt(x.w)-pt(y.w)||PIC_ORDER.indexOf(x.pic)-PIC_ORDER.indexOf(y.pic));}
 
-// ── TIME FORMAT ────────────────────────────────────────────
+// ── TIME FORMAT ──────────────────────────────────────────
 function fmtOne(s){
   const d=s.replace(/\D/g,'');if(!d)return s;
   const n=d.padStart(4,'0').slice(0,4);
@@ -597,75 +588,130 @@ function autoFmt(el){
   el.value=m?fmtOne(m[1].trim())+' - '+fmtOne(m[2].trim()):fmtOne(v);
 }
 
-// ── LOCAL STORAGE ─────────────────────────────────────────
-function lSave(){
-  const s={};
+// ══ FIREBASE REST ════════════════════════════════════════
+// Arsitek: histori (<2026-06-27) simpan hanya delta (chk+real).
+//           live (>=2026-06-27) simpan full task. Firebase = sumber kebenaran.
+
+function getPayload(){
+  const p={};
   Object.keys(DATA).forEach(k=>{
-    if(k>='2026-06-27')s[k]=DATA[k];
-    else s[k]=(DATA[k]||[]).map(t=>({id:t.id,chk:t.chk,real:t.real}));
+    if(k<'2026-06-27') p[k]=(DATA[k]||[]).map(t=>({id:t.id,chk:t.chk,real:t.real}));
+    else p[k]=DATA[k];
   });
-  try{localStorage.setItem(LK,JSON.stringify(s));}catch(e){}
-}
-function lLoad(){
-  DATA=JSON.parse(JSON.stringify(SEED));
-  try{
-    const s=localStorage.getItem(LK);if(!s)return;
-    const saved=JSON.parse(s);
-    Object.keys(saved).forEach(k=>{
-      if(k>='2026-06-27'){DATA[k]=saved[k];}
-      else{const map={};(saved[k]||[]).forEach(x=>{map[x.id]=x;});(DATA[k]||[]).forEach(t=>{if(map[t.id]){t.chk=map[t.id].chk;t.real=map[t.id].real||'';}});}
-    });
-  }catch(e){}
+  return p;
 }
 
-// ── CLOUD ─────────────────────────────────────────────────
+function mergeCloud(cloud){
+  const base=JSON.parse(JSON.stringify(SEED));
+  if(!cloud)return base;
+  Object.keys(cloud).forEach(k=>{
+    if(k<'2026-06-27'){
+      const m={};(cloud[k]||[]).forEach(x=>{m[x.id]=x;});
+      (base[k]||[]).forEach(t=>{if(m[t.id]){t.chk=m[t.id].chk;t.real=m[t.id].real||'';}});
+    }else{
+      base[k]=cloud[k];
+    }
+  });
+  return base;
+}
+
+async function dbGet(){
+  try{
+    const r=await fetch(`${FB_URL}/${FB_NODE}.json`,{cache:'no-store'});
+    if(!r.ok)return null;return await r.json();
+  }catch{return null;}
+}
+
+async function dbSet(payload){
+  try{
+    const r=await fetch(`${FB_URL}/${FB_NODE}.json`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    return r.ok;
+  }catch{return false;}
+}
+
 function setSyncUI(st,txt){
   const d=document.getElementById('syncDot'),t=document.getElementById('syncTxt');
   if(!d)return;d.className='dot'+(st==='s'?' s':st==='e'?' e':'');t.textContent=txt;
 }
-async function cloudGet(){
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:8000,system:'You are a key-value store. GET <key>: return ONLY stored JSON or null. No extra text.',messages:[{role:'user',content:`GET ${CK}`}]})});
-    if(!r.ok)return null;const d=await r.json();const t=d.content?.[0]?.text?.trim();
-    if(!t||t==='null')return null;return JSON.parse(t);
-  }catch(e){return null;}
-}
-async function cloudSet(payload){
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:50,system:'You are a key-value store. SET <key> <json>: store it, respond ONLY with {"ok":true}',messages:[{role:'user',content:`SET ${CK} ${JSON.stringify(payload)}`}]})});
-    return r.ok;
-  }catch(e){return false;}
-}
-async function doSync(){
-  setSyncUI('s','Sinkronisasi...');
-  const cloud=await cloudGet();
-  if(cloud&&typeof cloud==='object'){
-    const h=hash(JSON.stringify(cloud));
-    if(h!==lastHash){
-      const base=JSON.parse(JSON.stringify(SEED));
-      Object.keys(cloud).forEach(k=>{
-        if(k>='2026-06-27'){base[k]=cloud[k];}
-        else{const map={};(cloud[k]||[]).forEach(x=>{map[x.id]=x;});(base[k]||[]).forEach(t=>{if(map[t.id]){t.chk=map[t.id].chk;t.real=map[t.id].real||'';}});}
-      });
-      DATA=base;lastHash=h;lSave();renderAll();
-    }
-    setSyncUI('ok','Tersinkron · '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}));
-  }else{setSyncUI('e','Offline · data lokal');}
-}
-async function push(){
-  setSyncUI('s','Menyimpan...');lSave();
-  const payload={};
-  Object.keys(DATA).forEach(k=>{
-    if(k>='2026-06-27')payload[k]=DATA[k];
-    else payload[k]=(DATA[k]||[]).map(t=>({id:t.id,chk:t.chk,real:t.real}));
-  });
-  const ok=await cloudSet(payload);
-  lastHash=hash(JSON.stringify(payload));
-  setSyncUI(ok?'ok':'e',ok?'Tersimpan · '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}):'Gagal sync · lokal OK');
-}
-function startPoll(){if(pollTimer)clearInterval(pollTimer);pollTimer=setInterval(doSync,30000);}
 
-// ── AUTH ──────────────────────────────────────────────────
+async function doSync(quiet=false){
+  if(!quiet)setSyncUI('s','Sinkronisasi...');
+  const cloud=await dbGet();
+  if(cloud!==null){
+    const h=hsh(JSON.stringify(cloud));
+    if(h!==lastHash){
+      DATA=mergeCloud(cloud);lastHash=h;lSave();renderAll();
+    }
+    setSyncUI('ok','🟢 Tersinkron · '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}));
+  }else{
+    setSyncUI('e','🔴 Offline · data lokal');
+  }
+}
+
+async function push(){
+  setSyncUI('s','Menyimpan...');
+  lSave();
+  const payload=getPayload();
+  const ok=await dbSet(payload);
+  if(ok){lastHash=hsh(JSON.stringify(payload));}
+  setSyncUI(ok?'ok':'e',ok?'✅ Tersimpan · '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}):'⚠️ Gagal sync · data lokal OK');
+}
+
+function startSync(){
+  if(syncTimer)clearInterval(syncTimer);
+  // Poll setiap 5 detik — semua device auto-update dalam max 5 detik
+  syncTimer=setInterval(()=>doSync(true),5000);
+}
+
+// ── LOCAL STORAGE (cache) ────────────────────────────────
+function lSave(){
+  try{localStorage.setItem(LSKEY,JSON.stringify(getPayload()));}catch{}
+}
+function lLoad(){
+  // Mulai dari SEED, lalu overlay dengan localStorage cache
+  DATA=JSON.parse(JSON.stringify(SEED));
+  try{
+    const s=localStorage.getItem(LSKEY);if(!s)return;
+    const saved=JSON.parse(s);
+    DATA=mergeCloud(saved);
+  }catch{}
+}
+
+// ══ SETUP ════════════════════════════════════════════════
+function saveConfig(){
+  const raw=document.getElementById('fbUrlIn').value.trim();
+  const url=raw.replace(/\/+$/,''); // hapus trailing slash
+  const err=document.getElementById('setupErr');
+  err.textContent='';
+
+  if(!url){err.textContent='URL tidak boleh kosong.';return;}
+  if(!url.startsWith('https://')){err.textContent='URL harus dimulai dengan https://';return;}
+  if(!url.toLowerCase().includes('firebase')){err.textContent='Sepertinya bukan URL Firebase. Contoh: https://nama-project-default-rtdb.firebaseio.com';return;}
+
+  // Simpan langsung — koneksi dicek otomatis saat sync pertama
+  FB_URL=url;
+  localStorage.setItem(FBKEY,url);
+  document.getElementById('sSetup').style.display='none';
+  document.getElementById('sRole').style.display='flex';
+}
+
+function resetFbConfig(){
+  if(!confirm('Reset Firebase URL? Kamu perlu input ulang URL database.'))return;
+  localStorage.removeItem(FBKEY);
+  localStorage.removeItem(LSKEY);
+  FB_URL='';
+  // Tutup semua screen dan modal
+  closeM('mCfg');
+  document.getElementById('app').style.display='none';
+  ['sRole','sPic','sPwd'].forEach(s=>document.getElementById(s).style.display='none');
+  // Tampilkan setup screen
+  document.getElementById('sSetup').style.display='flex';
+  document.getElementById('fbUrlIn').value='';
+  document.getElementById('setupErr').textContent='';
+  if(syncTimer)clearInterval(syncTimer);
+}
+
+// ══ AUTH ═════════════════════════════════════════════════
 function sw(id){['sRole','sPic','sPwd'].forEach(s=>document.getElementById(s).style.display=s===id?'flex':'none');}
 function showPic(){sw('sPic');}
 function showPwd(){sw('sPwd');document.getElementById('pwdIn').value='';document.getElementById('pwdErr').textContent='';}
@@ -682,21 +728,27 @@ function enter(r,pic){
   document.getElementById('statsWrap').style.display=r==='admin'?'block':'none';
   document.getElementById('fab').style.display=(r==='admin'||pic!=='ALL')?'flex':'none';
   activeFilter=pic;
-  // Auto-set ke minggu yang mengandung hari ini
   const td=today();
   let wi=ALL_WEEKS.findIndex(w=>w.dates.includes(td));
   activeWeek=wi>=0?wi:ALL_WEEKS.length-1;
   renderAll();
-  // Scroll ke hari ini setelah render
-  setTimeout(scrollToToday,150);
-  doSync();startPoll();
+  // Sync dari Firebase (fix bug data hilang setelah refresh)
+  doSync();
+  startSync();
+  // Scroll ke hari ini
+  setTimeout(scrollToToday,300);
 }
-function logout(){if(pollTimer)clearInterval(pollTimer);role='';myPic='';document.getElementById('app').style.display='none';sw('sRole');}
 
-// ── RENDER ────────────────────────────────────────────────
+function logout(){
+  if(syncTimer)clearInterval(syncTimer);syncTimer=null;
+  role='';myPic='';
+  document.getElementById('app').style.display='none';
+  sw('sRole');
+}
+
+// ══ RENDER ═══════════════════════════════════════════════
 function renderNav(){
   document.getElementById('navWrap').innerHTML='<div class="tabs">'+ALL_WEEKS.map((w,i)=>`<button class="tab${i===activeWeek?' aw':''}" onclick="selW(${i})">${w.lbl}</button>`).join('')+'</div>';
-  // Scroll active tab into view
   setTimeout(()=>{const aw=document.querySelector('.tab.aw');if(aw)aw.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});},80);
 }
 function selW(i){activeWeek=i;renderAll();}
@@ -704,9 +756,8 @@ function selW(i){activeWeek=i;renderAll();}
 function renderMonth(){
   const wk=ALL_WEEKS[activeWeek];if(!wk)return;
   document.getElementById('monthBig').textContent=wk.monthName+' '+wk.year;
-  const td=today();
-  const hasToday=wk.dates.includes(td);
-  document.getElementById('monthSub').textContent=hasToday?'📍 Minggu ini — '+wk.lbl:'Minggu '+wk.lbl;
+  const hasToday=wk.dates.includes(today());
+  document.getElementById('monthSub').textContent=hasToday?'📍 Minggu aktif — '+wk.lbl:wk.lbl;
 }
 
 function renderFilter(){
@@ -720,7 +771,8 @@ function renderStats(){
   (wk?.dates||[]).forEach(k=>{const t=DATA[k]||[];tot+=t.length;done+=t.filter(x=>x.chk).length;});
   const pct=tot?Math.round(done/tot*100):0;
   document.getElementById('statGrid').innerHTML=`<div class="stat-card"><div class="stat-n">${tot}</div><div class="stat-l">Total Task</div></div><div class="stat-card"><div class="stat-n g">${done}</div><div class="stat-l">Selesai</div></div><div class="stat-card"><div class="stat-n">${tot-done}</div><div class="stat-l">Belum</div></div><div class="stat-card"><div class="stat-n g">${pct}%</div><div class="stat-l">Progress</div></div>`;
-  document.getElementById('progPct').textContent=pct+'%';document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=pct+'%';
+  document.getElementById('progFill').style.width=pct+'%';
 }
 
 function pbadge(pic){
@@ -747,10 +799,10 @@ function renderTable(){
         const canChk=!ro&&(role==='admin'||t.pic===myPic);
         const canEdit=!ro&&(role==='admin'||t.pic===myPic);
         const isAll=myPic==='ALL'&&role!=='admin';
-        const acts=canEdit&&!isAll?`<div style="display:flex;gap:3px"><button class="act-btn" onclick="openEdit('${k}',${t.id},event)" title="Edit">✏️</button><button class="act-btn act-del" onclick="delT('${k}',${t.id},event)" title="Hapus">🗑</button></div>`:'';
+        const acts=canEdit&&!isAll?`<div style="display:flex;gap:3px"><button class="act-btn" onclick="openEdit('${k}',${t.id},event)">✏️</button><button class="act-btn act-del" onclick="delT('${k}',${t.id},event)">🗑</button></div>`:'';
         html+=`<div class="task-row${!t.chk?' unchecked':''}">
           <div class="task-top">
-            <div class="chkbox${t.chk?' on':''}${(!canChk||isAll)?' ro':''}" onclick="${canChk&&!isAll?`toggleChk('${k}',${t.id})`:''}" style="${!canChk||isAll?'cursor:default':''}"></div>
+            <div class="chkbox${t.chk?' on':''}${(!canChk||isAll)?' ro':''}" onclick="${canChk&&!isAll?`toggleChk('${k}',${t.id})`:''}" style="${(!canChk||isAll)?'cursor:default':''}"></div>
             <div class="task-body">
               <div class="task-time">⏰ ${t.w}</div>
               <div class="task-plan">${t.p}</div>
@@ -758,13 +810,11 @@ function renderTable(){
             <div class="task-right">${pbadge(t.pic)}${acts}</div>
           </div>`;
         if(!ro){
-          const rval=t.real||'';
-          html+=`<div class="real-wrap">
-            <div class="real-label">📝 Realisasi / Catatan</div>
-            <textarea class="real-input" rows="1" id="real_${k}_${t.id}" placeholder="Isi jika ada perbedaan atau catatan..." onchange="saveReal('${k}',${t.id},this.value)">${rval}</textarea>
+          html+=`<div class="real-wrap"><div class="real-label">📝 Realisasi / Catatan</div>
+            <textarea class="real-input" rows="1" placeholder="Isi jika ada perbedaan atau catatan..." onchange="saveReal('${k}',${t.id},this.value)">${t.real||''}</textarea>
           </div>`;
         }else if(t.real){
-          html+=`<div class="real-wrap"><div class="real-label">📝 Realisasi</div><div style="font-size:11px;color:rgba(21,18,15,.5);padding:4px 0">${t.real}</div></div>`;
+          html+=`<div class="real-wrap"><div class="real-label">📝 Realisasi</div><div style="font-size:11px;color:rgba(21,18,15,.5);padding:3px 0">${t.real}</div></div>`;
         }
         html+=`</div>`;
       });
@@ -779,13 +829,9 @@ function renderTable(){
 }
 
 function renderAll(){renderNav();renderMonth();renderFilter();if(role==='admin')renderStats();renderTable();}
+function scrollToToday(){const el=document.getElementById('day_'+today());if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
 
-function scrollToToday(){
-  const el=document.getElementById('day_'+today());
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-// ── ACTIONS ───────────────────────────────────────────────
+// ══ ACTIONS ══════════════════════════════════════════════
 async function toggleChk(k,id){
   if(isRO(k))return;
   const t=(DATA[k]||[]).find(x=>x.id===id);if(!t)return;
@@ -795,6 +841,7 @@ async function saveReal(k,id,val){
   const t=(DATA[k]||[]).find(x=>x.id===id);if(!t)return;
   t.real=val;await push();
 }
+
 function openAdd(date){
   modalMode='add';editDate=date||today();editId=null;
   document.getElementById('mTitle').textContent='Tambah Plan';
@@ -805,6 +852,7 @@ function openAdd(date){
   document.getElementById('mTask').style.display='flex';
   setTimeout(()=>document.getElementById('fWaktu').focus(),200);
 }
+
 function openEdit(k,id,e){
   e.stopPropagation();if(isRO(k))return;
   modalMode='edit';editDate=k;editId=id;
@@ -815,6 +863,7 @@ function openEdit(k,id,e){
   document.getElementById('fPicWrap').style.display=role==='tim'?'none':'block';
   document.getElementById('mTask').style.display='flex';
 }
+
 async function saveTask(){
   let w=document.getElementById('fWaktu').value.trim();
   const p=document.getElementById('fPlan').value.trim();
@@ -822,184 +871,139 @@ async function saveTask(){
   const date=document.getElementById('fDate').value;
   if(!w||!p||!date){alert('Waktu dan Plan wajib diisi.');return;}
   if(isRO(date)){alert('Data histori tidak bisa diubah.');return;}
-  // Auto-format waktu saat save
+  // Auto-format waktu
   const m=w.match(/^([^-–]+)[-–](.+)$/);
   w=m?fmtOne(m[1].trim())+' - '+fmtOne(m[2].trim()):fmtOne(w);
   if(modalMode==='add'){
     if(!DATA[date])DATA[date]=[];
-    const mx=DATA[date].reduce((m,x)=>Math.max(m,x.id),0);
+    const mx=DATA[date].reduce((a,x)=>Math.max(a,x.id),0);
     DATA[date].push({id:mx+1,w,p,pic,chk:false,real:''});
   }else{
-    const arr=DATA[editDate]||[];
     if(editDate===date){
-      const idx=arr.findIndex(x=>x.id===editId);
-      if(idx!==-1)arr[idx]={...arr[idx],w,p,pic};
+      const idx=(DATA[editDate]||[]).findIndex(x=>x.id===editId);
+      if(idx!==-1)DATA[editDate][idx]={...DATA[editDate][idx],w,p,pic};
     }else{
-      const idx=arr.findIndex(x=>x.id===editId);if(idx!==-1)arr.splice(idx,1);
+      DATA[editDate]=(DATA[editDate]||[]).filter(x=>x.id!==editId);
       if(!DATA[date])DATA[date]=[];
-      const mx=DATA[date].reduce((m,x)=>Math.max(m,x.id),0);
+      const mx=DATA[date].reduce((a,x)=>Math.max(a,x.id),0);
       DATA[date].push({id:mx+1,w,p,pic,chk:false,real:''});
     }
   }
   closeM('mTask');renderAll();await push();
 }
+
 async function delT(k,id,e){
   e.stopPropagation();if(isRO(k))return;
   if(!confirm('Hapus plan ini?'))return;
-  DATA[k]=DATA[k].filter(x=>x.id!==id);renderAll();await push();
+  DATA[k]=(DATA[k]||[]).filter(x=>x.id!==id);renderAll();await push();
 }
 
-// ── CFG ───────────────────────────────────────────────────
-function openCfg(){document.getElementById('mCfg').style.display='flex';}
-function showMaintInfo(){
-  const el=document.getElementById('maintInfo');
-  el.style.display=el.style.display==='none'?'block':'none';
+// ══ CFG ══════════════════════════════════════════════════
+function openCfg(){
+  document.getElementById('mCfg').style.display='flex';
+  const el=document.getElementById('currentFbUrl');
+  if(el)el.textContent=FB_URL||'Belum dikonfigurasi';
 }
-function openPwdChange(){
-  closeM('mCfg');document.getElementById('np1').value='';document.getElementById('np2').value='';
-  document.getElementById('npErr').textContent='';document.getElementById('mPwd').style.display='flex';
-}
-function savePwd(){
-  const p1=document.getElementById('np1').value,p2=document.getElementById('np2').value;
-  if(!p1){document.getElementById('npErr').textContent='Tidak boleh kosong.';return;}
-  if(p1!==p2){document.getElementById('npErr').textContent='Tidak cocok.';return;}
-  localStorage.setItem(PK,p1);closeM('mPwd');alert('Password diubah!');
-}
-function nukeWeek(){
-  const wk=ALL_WEEKS[activeWeek];
-  if(!wk||!confirm('Hapus semua plan minggu ini?'))return;
-  wk.dates.forEach(k=>{if(!isRO(k))DATA[k]=[];});
-  closeM('mCfg');renderAll();push();
-}
+function openPwdChange(){closeM('mCfg');document.getElementById('np1').value='';document.getElementById('np2').value='';document.getElementById('npErr').textContent='';document.getElementById('mPwd').style.display='flex';}
+function savePwd(){const p1=document.getElementById('np1').value,p2=document.getElementById('np2').value;if(!p1){document.getElementById('npErr').textContent='Tidak boleh kosong.';return;}if(p1!==p2){document.getElementById('npErr').textContent='Tidak cocok.';return;}localStorage.setItem(PWKEY,p1);closeM('mPwd');alert('Password diubah!');}
+async function nukeWeek(){const wk=ALL_WEEKS[activeWeek];if(!wk||!confirm('Hapus semua plan minggu ini?'))return;wk.dates.forEach(k=>{if(!isRO(k))DATA[k]=[];});closeM('mCfg');renderAll();await push();}
 function openExport(){document.getElementById('mExport').style.display='flex';}
 
-// ── EXPORT ────────────────────────────────────────────────
+// ══ EXPORT ═══════════════════════════════════════════════
 function getRows(){
   const rows=[];
   Object.keys(DATA).sort().forEach(k=>{
     const d=new Date(k+'T00:00:00');
-    const tgl=`${d.getDate()} ${BLN_FULL[d.getMonth()+1]} ${d.getFullYear()}`;
-    (DATA[k]||[]).forEach(t=>{
-      rows.push({iso:k,tanggal:tgl,hari:HRI[d.getDay()],waktu:t.w,plan:t.p,pic:t.pic,selesai:t.chk?'Ya':'Tidak',realisasi:t.real||''});
-    });
+    const tgl=`${d.getDate()} ${BLN_F[d.getMonth()+1]} ${d.getFullYear()}`;
+    (DATA[k]||[]).forEach(t=>rows.push({iso:k,tanggal:tgl,hari:HRI[d.getDay()],waktu:t.w,plan:t.p,pic:t.pic,selesai:t.chk?'Ya':'Tidak',realisasi:t.real||''}));
   });
   return rows;
 }
 function dlBlob(name,content,type){
-  const blob=new Blob([content],{type});
-  const url=URL.createObjectURL(blob);
+  const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);
   const a=document.createElement('a');a.href=url;a.download=name;a.click();
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 function exportCSV(){
   const rows=getRows();
-  const hdr=['Tanggal','Hari','Waktu','Plan / Kegiatan','PIC','Selesai','Realisasi / Catatan'];
-  const csv=[hdr,...rows.map(r=>[r.tanggal,r.hari,r.waktu,r.plan,r.pic,r.selesai,r.realisasi])].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const hdr=['Tanggal ISO','Tanggal','Hari','Waktu','Plan / Kegiatan','PIC','Selesai','Realisasi / Catatan'];
+  const csv=[hdr,...rows.map(r=>[r.iso,r.tanggal,r.hari,r.waktu,r.plan,r.pic,r.selesai,r.realisasi])].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
   dlBlob('ATV_Realisasi.csv','\uFEFF'+csv,'text/csv;charset=utf-8');
 }
 function exportExcel(){
-  if(!window.XLSX){alert('Library Excel belum siap, coba lagi.');return;}
+  if(!window.XLSX){alert('Library belum siap, coba lagi.');return;}
   const rows=getRows();
-  const wsData=[['Tanggal','Hari','Waktu','Plan / Kegiatan','PIC','Selesai','Realisasi / Catatan'],...rows.map(r=>[r.tanggal,r.hari,r.waktu,r.plan,r.pic,r.selesai,r.realisasi])];
-  const wb=XLSX.utils.book_new();
-  const ws=XLSX.utils.aoa_to_sheet(wsData);
-  ws['!cols']=[{wch:18},{wch:8},{wch:14},{wch:45},{wch:12},{wch:7},{wch:35}];
-  XLSX.utils.book_append_sheet(wb,'Realisasi ATV',ws);
-  XLSX.writeFile(wb,'ATV_Realisasi.xlsx');
+  const wsData=[['Tanggal ISO','Tanggal','Hari','Waktu','Plan / Kegiatan','PIC','Selesai','Realisasi / Catatan'],...rows.map(r=>[r.iso,r.tanggal,r.hari,r.waktu,r.plan,r.pic,r.selesai,r.realisasi])];
+  const wb=XLSX.utils.book_new();const ws=XLSX.utils.aoa_to_sheet(wsData);
+  ws['!cols']=[{wch:13},{wch:18},{wch:8},{wch:14},{wch:45},{wch:12},{wch:7},{wch:35}];
+  XLSX.utils.book_append_sheet(wb,'Realisasi ATV',ws);XLSX.writeFile(wb,'ATV_Realisasi.xlsx');
 }
 function exportPDF(){
-  if(!window.jspdf){alert('Library PDF belum siap, coba lagi.');return;}
-  const {jsPDF}=window.jspdf;
-  const doc=new jsPDF({orientation:'landscape',format:'a4'});
-  doc.setFontSize(14);doc.setFont('helvetica','bold');
-  doc.text('ATV Creative Asia — Daily Realisasi',14,12);
-  doc.setFontSize(9);doc.setFont('helvetica','normal');
-  doc.text('Digenerate: '+new Date().toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'}),14,18);
+  if(!window.jspdf){alert('Library belum siap, coba lagi.');return;}
+  const {jsPDF}=window.jspdf;const doc=new jsPDF({orientation:'landscape',format:'a4'});
+  doc.setFontSize(14);doc.setFont('helvetica','bold');doc.text('ATV Creative Asia — Daily Realisasi',14,12);
+  doc.setFontSize(9);doc.setFont('helvetica','normal');doc.text('Export: '+new Date().toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'}),14,18);
   const rows=getRows();
-  doc.autoTable({
-    startY:22,
-    head:[['Tanggal','Hari','Waktu','Plan / Kegiatan','PIC','Selesai','Realisasi / Catatan']],
-    body:rows.map(r=>[r.tanggal,r.hari,r.waktu,r.plan.substring(0,55),r.pic,r.selesai,r.realisasi.substring(0,40)]),
-    styles:{fontSize:7,cellPadding:2},
-    headStyles:{fillColor:[208,112,72],textColor:255,fontStyle:'bold'},
-    alternateRowStyles:{fillColor:[252,248,244]},
-    columnStyles:{0:{cellWidth:22},1:{cellWidth:14},2:{cellWidth:20},3:{cellWidth:65},4:{cellWidth:18},5:{cellWidth:14},6:{cellWidth:55}},
-  });
+  doc.autoTable({startY:22,head:[['Tanggal','Hari','Waktu','Plan','PIC','Done','Realisasi']],body:rows.map(r=>[r.tanggal,r.hari,r.waktu,r.plan.substring(0,55),r.pic,r.selesai,r.realisasi.substring(0,40)]),styles:{fontSize:7,cellPadding:2},headStyles:{fillColor:[208,112,72],textColor:255,fontStyle:'bold'},alternateRowStyles:{fillColor:[252,248,244]},columnStyles:{0:{cellWidth:22},1:{cellWidth:12},2:{cellWidth:18},3:{cellWidth:65},4:{cellWidth:18},5:{cellWidth:12},6:{cellWidth:55}}});
   doc.save('ATV_Realisasi.pdf');
 }
-function exportJSON(){
-  dlBlob('ATV_Realisasi_backup.json',JSON.stringify(DATA,null,2),'application/json');
-}
+function exportJSON(){dlBlob('ATV_Realisasi_backup.json',JSON.stringify(DATA,null,2),'application/json');}
 
-// ── IMPORT ────────────────────────────────────────────────
+// ══ IMPORT ═══════════════════════════════════════════════
 function handleImport(input){
   const file=input.files[0];if(!file)return;
-  const st=document.getElementById('impStatus');
-  st.textContent='Memproses...';st.style.color='rgba(21,18,15,.4)';
+  const st=document.getElementById('impStatus');st.textContent='Memproses...';st.style.color='rgba(21,18,15,.4)';
   const ext=file.name.split('.').pop().toLowerCase();
+  const done=(n)=>{st.textContent=`✅ ${n} baris diimport!`;st.style.color='var(--grn)';lSave();renderAll();push();};
+  const fail=(msg)=>{st.textContent='❌ '+msg;st.style.color='#c0392b';};
   if(ext==='json'){
-    const r=new FileReader();
-    r.onload=e=>{try{const d=JSON.parse(e.target.result);Object.assign(DATA,d);lSave();renderAll();push();st.textContent='✅ Import JSON berhasil!';st.style.color='var(--grn)';}catch(er){st.textContent='❌ Format JSON tidak valid.';st.style.color='#c0392b';}};
-    r.readAsText(file);
+    const r=new FileReader();r.onload=e=>{try{const d=JSON.parse(e.target.result);DATA=mergeCloud(d);done(Object.values(d).reduce((a,v)=>a+(v.length||0),0));}catch{fail('Format JSON tidak valid.');}};r.readAsText(file);
   }else if(ext==='csv'){
-    const r=new FileReader();
-    r.onload=e=>{
+    const r=new FileReader();r.onload=e=>{
       try{
-        const lines=e.target.result.replace(/\r/g,'').split('\n').filter(l=>l.trim());
-        let imported=0;
+        const lines=e.target.result.replace(/\r/g,'').split('\n').filter(l=>l.trim());let n=0;
         lines.slice(1).forEach(line=>{
           const cols=line.split(',').map(c=>c.replace(/^"|"$/g,'').replace(/""/g,'"').trim());
-          // cols: Tanggal(display), Hari, Waktu, Plan, PIC, Selesai, Realisasi
-          // Try to find ISO date in first col or derive from display date
-          // If user exports and re-imports, col 0 is display date — we need to find by match
-          // Better: user should import with ISO date in first col
-          // We'll try to detect YYYY-MM-DD pattern
-          const raw=cols[0];
-          let iso=raw;
-          if(!/^\d{4}-\d{2}-\d{2}$/.test(raw))return; // skip if not ISO
+          const iso=cols[0];if(!/^\d{4}-\d{2}-\d{2}$/.test(iso))return;
           if(!DATA[iso])DATA[iso]=[];
-          const mx=DATA[iso].reduce((m,x)=>Math.max(m,x.id),0);
-          DATA[iso].push({id:mx+1,w:cols[2]||'',p:cols[3]||'',pic:cols[4]||'CREATIVE',chk:cols[5]==='Ya',real:cols[6]||''});
-          imported++;
+          const mx=DATA[iso].reduce((a,x)=>Math.max(a,x.id),0);
+          DATA[iso].push({id:mx+1,w:cols[3]||'',p:cols[4]||'',pic:cols[5]||'CREATIVE',chk:cols[6]==='Ya',real:cols[7]||''});n++;
         });
-        lSave();renderAll();push();
-        st.textContent=`✅ ${imported} baris berhasil diimport!`;st.style.color='var(--grn)';
-      }catch(er){st.textContent='❌ Gagal baca CSV.';st.style.color='#c0392b';}
-    };
-    r.readAsText(file,'UTF-8');
+        done(n);
+      }catch{fail('Gagal baca CSV.');}
+    };r.readAsText(file,'UTF-8');
   }else if(ext==='xlsx'||ext==='xls'){
-    if(!window.XLSX){st.textContent='❌ Library Excel belum siap.';return;}
-    const r=new FileReader();
-    r.onload=e=>{
+    if(!window.XLSX){fail('Library Excel belum siap.');return;}
+    const r=new FileReader();r.onload=e=>{
       try{
-        const wb=XLSX.read(e.target.result,{type:'array'});
-        const ws=wb.Sheets[wb.SheetNames[0]];
-        const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
-        let imported=0;
+        const wb=XLSX.read(e.target.result,{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];
+        const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});let n=0;
         rows.slice(1).forEach(cols=>{
-          const iso=String(cols[0]||'').trim();
-          if(!/^\d{4}-\d{2}-\d{2}$/.test(iso))return;
+          const iso=String(cols[0]||'').trim();if(!/^\d{4}-\d{2}-\d{2}$/.test(iso))return;
           if(!DATA[iso])DATA[iso]=[];
-          const mx=DATA[iso].reduce((m,x)=>Math.max(m,x.id),0);
-          DATA[iso].push({id:mx+1,w:String(cols[2]||''),p:String(cols[3]||''),pic:String(cols[4]||'CREATIVE'),chk:String(cols[5])===('Ya'),real:String(cols[6]||'')});
-          imported++;
+          const mx=DATA[iso].reduce((a,x)=>Math.max(a,x.id),0);
+          DATA[iso].push({id:mx+1,w:String(cols[3]||''),p:String(cols[4]||''),pic:String(cols[5]||'CREATIVE'),chk:String(cols[6])==='Ya',real:String(cols[7]||'')});n++;
         });
-        lSave();renderAll();push();
-        st.textContent=`✅ ${imported} baris berhasil diimport!`;st.style.color='var(--grn)';
-      }catch(er){st.textContent='❌ Gagal baca Excel.';st.style.color='#c0392b';}
-    };
-    r.readAsArrayBuffer(file);
-  }else{st.textContent='❌ Format tidak didukung. Gunakan CSV, XLSX, atau JSON.';st.style.color='#c0392b';}
+        done(n);
+      }catch{fail('Gagal baca Excel.');}
+    };r.readAsArrayBuffer(file);
+  }else{fail('Format tidak didukung.');}
   input.value='';
 }
 
-// ── MODAL ─────────────────────────────────────────────────
+// ══ MODAL ════════════════════════════════════════════════
 function closeM(id){document.getElementById(id).style.display='none';}
 function bgClose(e,id){if(e.target===document.getElementById(id))closeM(id);}
-window.addEventListener('storage',e=>{if(e.key===LK){try{lLoad();renderAll();}catch(ex){}}});
 
-// ── INIT ──────────────────────────────────────────────────
-lLoad();
+// ══ INIT ═════════════════════════════════════════════════
+lLoad(); // load dari localStorage cache dulu (agar tidak blank)
+if(!FB_URL){
+  // Firebase belum dikonfigurasi → tampilkan setup screen
+  document.getElementById('sSetup').style.display='flex';
+}else{
+  // Firebase sudah ada → langsung ke role selection
+  document.getElementById('sRole').style.display='flex';
+}
 </script>
 </body>
 </html>
